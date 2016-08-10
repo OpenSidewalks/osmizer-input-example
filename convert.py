@@ -17,7 +17,9 @@ def write_geojson(df, path):
 # Simple conversions - strip *all* metadata, keep only location info
 #
 
-for feature_type in ['crossings', 'curbramps', 'sidewalks']:
+layer_list =  ['crossings', 'curbramps', 'sidewalks', 'sidewalks-udistrict']
+
+for feature_type in layer_list:
     print('Converting {}...'.format(feature_type))
     df = gpd.read_file('./input/{}.geojson'.format(feature_type))
     df_new = df.loc[:, ['geometry']]
